@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="en">
+    <head>
+        <title> Antonīmu spēle </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="antonimufunkcijas.js"></script>
+        <style>
+            * {
+                box-sizing: border-box;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            body {
+                background-color: #A8FF2B;
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* Style the top navigation bar */
+            .topnav {
+                overflow: hidden;
+                background-color: #333;
+            }
+
+            /* Style the topnav links */
+            .topnav a {
+                float: left;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 40px 40px;
+                text-decoration: none;
+                width: 20%;
+            }
+
+            /* Change color on hover */
+            .topnav a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+            /* Style the content */
+            .content {
+                background-color: #A8FF2B;
+                padding: 40px;
+                height: 500px; /* Should be removed. Only for demonstration */
+            }
+
+            /* Style the footer */
+            .footer {
+                background-color: #A9A9A9;
+                padding: 10px;
+                margin-top: auto;
+            }
+            * {
+                box-sizing: border-box;
+            }
+
+            .column {
+                float: left;
+                width: 50%;
+                padding: 1px;
+            }
+
+            /* Clearfix (clear floats) */
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="topnav">
+            <a href="#" onclick="showContent('play')">Spēlēt</a>
+            <a href="#" onclick="showContent('rules')">Noteikumi</a>
+            <a href="#" onclick="showContent('results')">Rezultāti</a>
+            <a href="#" onclick="showContent('developers')">Izstrādātāji</a>
+            <a href="#" onclick="showContent('home')">Sākums</a>
+
+        </div>
+
+        <div class="content">
+            <h2>Antonīmu spēle</h2>
+            <p>Izbaudi šo lielisko izklaides iespēju un iemācies jaunus vārdus!</p>
+
+
+
+        </div>
+
+        <div class="content" id="playContent" style="display: none; text-align: center;">
+
+            <h2>Spēlēt</h2>
+            <label for="playerName">Spēlētāja vārds:</label>
+            <input type="text" id="playerName" placeholder="Ievadiet savu vārdu">
+            <div id="score">Rezultāts: <span id="scoreValue">0</span></div>
+            <div id="word"></div>
+            <input type="text" id="input" placeholder="Ievadiet antonīmu" disabled>
+
+
+
+            <button onclick="sakt(); radit()">Sākt</button>
+            <button onclick="checkAntonym();clear();">Apstiprināt</button>
+            <div id="demo"></div>      
+        </div>
+        
+
+
+        <div class="content" id="rulesContent" style="display: none; text-align: center;">
+
+            <h2>Noteikumi</h2>
+            <p>Spēlētāja uzdevums ir, pēc iespējas īsākā laika nogrieznī, savākt pēc iespējas vairāk punktu. Lai sāktu spēli, jāievada savs spēlētāja vārds, pēcāk jāspiež poga "Sākt". Katrs pareizi ievadītais antonīms, dod papildus vienu punktu. Par katru pareizo atbildi, taimerim tiek pievienotas piecas sekundes. Atbildes jāsniedz angļu valodā un ar mazajiem burtiem, spiežot uz pogas "Apstiprināt"! Taimerim sasniedzot nulle sekundes, tiek fiksēts spēlētāja rezultāts.</p>
+        </div>
+
+        <div class="content" id="resultsContent" style="display: none; text-align: center;">
+
+            <h2>Rezultāti</h2>
+            <p>Rezultāti parādīsies šeit!</p>
+        </div>
+
+        <div class="content" id="homeContent" style="display: none;">
+
+            <h2>Antonīmu spēle</h2>
+            <p>Izbaudi šo lielisko izklaides iespēju un iemācies jaunus vārdus!</p>
+        </div>
+
+
+        <div class="content" id="developersContent" style="display: none; text-align: center;">
+            <h2>Izstrādātāji</h2>
+            <p>Spēli izstrādājis Mārtiņš Dzenītis un Edvards Zvirgzdiņš</p>
+
+            <div class="row">
+                <div class="column">
+                    <img src="https://eventor.orienteering.org/MyPages/ProfilePhoto/42300" alt="Mārtiņš Dzenītis" style="display: block; margin: 0 auto;">
+                </div>
+                <div class="column">
+                    <img src="https://eventor.orienteering.org/MyPages/ProfilePhoto/42296" alt="Edvards Zvirgzdiņš" style="display: block; margin: 0 auto;">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="footer">
+            <p>Droši raksti savas atsauksmes un ieteikumus uz edvards.zvirgzdins@gmail.com</p>
+        </div>
+
+        <script>
+            function showContent(contentId) {
+
+                const allContent = document.querySelectorAll('.content');
+                allContent.forEach(content => content.style.display = 'none');
+
+                const contentToShow = document.getElementById(contentId + 'Content');
+                if (contentToShow) {
+                    contentToShow.style.display = 'block';
+                }
+            }
+        </script>
+
+
+
+    </body>
+</html>
